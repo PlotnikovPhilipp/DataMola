@@ -1,0 +1,13 @@
+<div class="window-item" [style.height]="height + 'px'">
+    <div class="window-item__name-film">
+        {{name}}
+
+        <!-- Genres -->
+        <ul class="window-item__genre-name">
+            <li class="window-item__genre-item" *ngFor="let item of listOfGenres" [appColorGenreItems]="item">{{item}}</li>
+        </ul>
+    </div>
+    <div class="window-item__season-name">{{season}}</div>
+    <div class="window-item__network-name">{{network}}</div>
+    <div class="window-item__network-name">{{data}}</div>
+</div>

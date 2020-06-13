@@ -1,0 +1,51 @@
+@mixin default-styles-for-inputs
+    background-color: #e69c59
+    font-size: 1.2rem
+    color: white
+    font-weight: bold
+    padding: 0.6% 1%
+    width: 20%
+    position: relative
+
+@mixin default-styles-for-selector-lists
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    background-color: white
+    color: black
+    z-index: 999
+
+
+.control-header
+    display: flex
+    width: 100%
+    justify-content: space-between
+
+
+// Name film input
+.control-header__film-name-input
+    @include default-styles-for-inputs
+    width: 33%
+
+.control-header__film-name-input::placeholder
+    color: white
+    font-weight: bold
+
+
+// Containers 
+.control-header__genre-selector-container
+    @include default-styles-for-inputs
+    cursor: pointer
+
+.control-header__year-selector-container
+    @include default-styles-for-inputs
+    cursor: pointer
+
+// Lists of selectors
+.control-header__genre-list,
+.control-header__year-list
+    @include default-styles-for-selector-lists
+    
+    
+

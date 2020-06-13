@@ -1,0 +1,14 @@
+<div class="window">
+    <header class="window-header">
+        <app-window-header></app-window-header>
+    </header>
+    <section class="window-body">
+        <app-window-item *ngFor="let film of listOfFilms.films"
+        [name]="film.filmName"
+        [genre]="film.info.genre"
+        [season]="film.info.season"
+        [network]="film.info.network"
+        [data]="film.info.data"
+        ></app-window-item>
+    </section>
+</div>

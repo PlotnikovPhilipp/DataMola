@@ -1,0 +1,27 @@
+<div class="control-header">
+    <input class="control-header__film-name-input" placeholder="Name" name="name" type="text">
+
+    <!-- Genre selector -->
+    <div class="control-header__genre-selector-container">
+        <div (click)="changeVisibleStateOfGenreList()" class="control-header__genre-selector">
+            {{currentGenre}}
+        </div>
+
+        <!-- Genre list -->
+        <ul class="control-header__genre-list" *ngIf="isGenreListVisible">
+            <li (click)="selectCurrentValueOfGenre(item)" *ngFor="let item of listOfGenres" class="control-header__genre-list-item">{{item.genre}}</li>
+        </ul>
+    </div>
+
+    <!-- Year selector -->
+    <div class="control-header__year-selector-container">
+        <div (click)="changeVisibleStateOfYearList()" class="control-header__year-selector">
+            {{currentYear}}
+        </div>
+
+        <!-- Year list -->
+        <ul class="control-header__year-list" *ngIf="isYearListVisible">
+            <li (click)="selectCurrentValueOfYear(item)" *ngFor="let item of listOfYears" class="control-header__year-list-item">{{item}}</li>
+        </ul>
+    </div>
+</div>

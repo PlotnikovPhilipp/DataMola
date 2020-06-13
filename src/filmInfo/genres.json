@@ -1,0 +1,26 @@
+[
+    {
+        "genre": "horror",
+        "color": "#4f4f4f"
+    },
+
+    {
+        "genre": "drama",
+        "color": "#b071d3"
+    },
+
+    {
+        "genre": "crime",
+        "color": "#9159d9"
+    },
+
+    {
+        "genre": "tragedy",
+        "color": "#9159d9"
+    },
+
+    {
+        "genre": "dark comedy",
+        "color": "#9159d9"
+    }
+]

@@ -1,0 +1,27 @@
+@mixin default-header-section-styles
+    font-size: 1.2rem
+    color: white
+    font-weight: bold
+    padding: 0.6% 0%
+    position: relative
+
+.window-header
+    display: flex
+    width: 100%
+    justify-content: stretch
+    background-color: #8a55cf
+
+.window-header__name-section
+    @include default-header-section-styles
+    padding: 0.6% 1%
+    width: 33%
+
+.window-header__season-section,
+.window-header__network-section,
+.window-header__premiere-section
+    @include default-header-section-styles
+    display: flex
+    justify-content: center
+    flex: 1
+
+    
