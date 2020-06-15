@@ -1,17 +1,25 @@
 <header class="window-header">
-    <div class="window-header__name-section">
+    <div (click)="sortByName()" class="window-header__name-section">
         Name
+        <div class="window-header__arrow-container">
+            <img class="window-header__up-arrow" src="/imgs/windowHeaderArrow.svg" alt="up arrow">
+            <img class="window-header__low-arrow" src="/imgs/windowHeaderArrow.svg" alt="low arrow">
+        </div>
     </div>
 
-    <div class="window-header__season-section">
+    <div (click)="sortBySeason()" class="window-header__season-section">
         Season
     </div>
 
-    <div class="window-header__network-section">
+    <div (click)="sortByNetwork()" class="window-header__network-section">
         Network
     </div>
 
-    <div class="window-header__premiere-section">
+    <div (click)="sortByPremiere()" class="window-header__premiere-section">
         Premiere
+        <div class="window-header__arrow-container">
+            <img class="window-header__up-arrow" src="/imgs/windowHeaderArrow.svg" alt="up arrow">
+            <img class="window-header__low-arrow" src="/imgs/windowHeaderArrow.svg" alt="low arrow">
+        </div>
     </div>
 </header>

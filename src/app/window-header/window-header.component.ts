@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../types';
+import { sortByName, sortBySeason, sortByNetwork, sortByPremiere } from '../../actions'
 
 @Component({
   selector: 'app-window-header',
@@ -7,6 +11,21 @@ import { Component } from '@angular/core';
 })
 export class WindowHeaderComponent {
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
+  sortByName(): void {
+    this.store.dispatch(sortByName());
+  }
+
+  sortBySeason(): void {
+    this.store.dispatch(sortBySeason());
+  }
+
+  sortByNetwork(): void {
+    this.store.dispatch(sortByNetwork());
+  }
+
+  sortByPremiere(): void {
+    this.store.dispatch(sortByPremiere());
+  }
 }

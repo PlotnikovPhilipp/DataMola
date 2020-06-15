@@ -27,6 +27,13 @@
 .control-header__film-name-input
     @include default-styles-for-inputs
     width: 33%
+    background-image: url("/imgs/loupe.svg")
+    background-repeat: no-repeat
+    background-size: 8%
+    background-position: 98% center
+
+.control-header__film-name-input:focus
+    background-image: none
 
 .control-header__film-name-input::placeholder
     color: white
@@ -42,10 +49,20 @@
     @include default-styles-for-inputs
     cursor: pointer
 
+.control-header__genre-selector,
+.control-header__year-selector
+    background-image: url("/imgs/lowArrow.svg")
+    background-repeat: no-repeat
+    background-size: 8%
+    background-position: right center
+
 // Lists of selectors
 .control-header__genre-list,
 .control-header__year-list
     @include default-styles-for-selector-lists
+    height: 30vh
+    box-shdow: 30px 120px 50px rgb(198, 197, 197, 0.25)
+    overflow: auto
     
     
 

@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
-import genresData from '../../filmInfo/genres.json';
-import yearsData from '../../filmInfo/years.json';
-import defaultValues from '../../filmInfo/config.json';
-
-const DEFAULT_GENRE: string = defaultValues.DEFAULT_GENRE;
-const DEFAULT_YEAR: number = defaultValues.DEFAULT_YEAR;
-
-interface genreSettings {
-  genre: string;
-  color: string;
-}
+import { Store, select } from '@ngrx/store';
+import { getStoreData } from '../../selector';
+import { genreSettings, AppState, State } from '../../types';
+import { filterByName, filterByGenres, filterByYears } from '../../actions';
 
 @Component({
   selector: 'app-control-header',
@@ -18,24 +11,44 @@ interface genreSettings {
 })
 export class ControlHeaderComponent {
   listOfGenres: Array<genreSettings>;
-  listOfYears: Array<number>;
+  listOfYears: Array<string>;
   currentGenre: string;
-  currentYear: number;
+  currentYear: string;
   isGenreListVisible: boolean;
   isYearListVisible: boolean;
 
-  constructor() {
-    this.listOfGenres = genresData;
-    this.listOfYears = [];
-    this.currentGenre = DEFAULT_GENRE;
-    this.currentYear = DEFAULT_YEAR;
+  constructor(private store: Store<AppState>) {
+
+    this.store.pipe(select(getStoreData)).subscribe(
+      (store: State) => {
+        this.listOfGenres = [{'genre': 'All', 'color': ''}]
+        this.listOfGenres.push(...store.genreList);
+        this.listOfYears = ['All'];
+        this.currentGenre = (this.currentGenre)? this.currentGenre : store.DEFAULT_GENRE;
+        this.currentYear = (this.currentYear)? this.currentYear : store.DEFAULT_YEAR;
+
+        for(let i: number = store.yearList.from; i <= store.yearList.to; i++) {
+          this.listOfYears.push(i.toString());
+        }
+      }
+    );
+    
     this.isGenreListVisible = false;
     this.isYearListVisible = false;
-
-    for(let i: number = yearsData.from; i <= yearsData.to; i++) {
-      this.listOfYears.push(i);
-    }
   }
+
+  findFilmsByName(name: string): void {
+    this.store.dispatch(filterByName({name}));
+  }
+
+  findFilmsByGenre(genre: string): void {
+    this.store.dispatch(filterByGenres({genre}));
+  }
+
+  findFilmsByYear(year: string) {
+    this.store.dispatch(filterByYears({year}));
+  }
+
 
   changeVisibleStateOfGenreList() {
     this.isGenreListVisible = !this.isGenreListVisible;
@@ -43,16 +56,18 @@ export class ControlHeaderComponent {
 
   selectCurrentValueOfGenre(value: string) {
     this.currentGenre = value;
+    this.findFilmsByGenre(value);
     this.changeVisibleStateOfGenreList();
   }
+
 
   changeVisibleStateOfYearList() {
     this.isYearListVisible = !this.isYearListVisible;
   }
 
-  selectCurrentValueOfYear(value: number) {
+  selectCurrentValueOfYear(value: string) {
     this.currentYear = value;
-    this.changeVisibleStateOfYearList()
+    this.findFilmsByYear(value.toString());
+    this.changeVisibleStateOfYearList();
   }
-
 }

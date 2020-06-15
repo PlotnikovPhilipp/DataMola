@@ -1,5 +1,5 @@
 <div class="control-header">
-    <input class="control-header__film-name-input" placeholder="Name" name="name" type="text">
+    <input #nameField (keyup.enter)="findFilmsByName(nameField.value)" class="control-header__film-name-input" placeholder="Name" name="name" type="text">
 
     <!-- Genre selector -->
     <div class="control-header__genre-selector-container">
@@ -9,7 +9,7 @@
 
         <!-- Genre list -->
         <ul class="control-header__genre-list" *ngIf="isGenreListVisible">
-            <li (click)="selectCurrentValueOfGenre(item)" *ngFor="let item of listOfGenres" class="control-header__genre-list-item">{{item.genre}}</li>
+            <li (click)="selectCurrentValueOfGenre(item.genre)" *ngFor="let item of listOfGenres" class="control-header__genre-list-item">{{item.genre}}</li>
         </ul>
     </div>
 

@@ -1,52 +1,113 @@
 import { createReducer, on, ActionReducer } from '@ngrx/store';
-import { initStore, filterByName, filterByGenres, filterByYears } from './actions';
-
-interface filmItem {
-    'filmName': string;
-    'info': {
-        'genre': string;
-        'season': string;
-        'network': string;
-        'data': string;
-    }
-}
-
-interface State {
-    'DEFAULT_GENRE': string;
-    'DEFAULT_YEAR': number;
-    'AMOUNT_OF_FILM_ON_ONE_PAGE': number;
-    'films': Array<filmItem>
-}
+import * as actions from './actions';
+import { State } from './types';
 
 const initialState: State = {
     'DEFAULT_GENRE': null,
     'DEFAULT_YEAR': null,
+    'genreList': null,
+    'yearList': null,
     'AMOUNT_OF_FILM_ON_ONE_PAGE': null,
+    'currentPageIndex': null,
     'films': null
 };
 
 const _mainReducer: ActionReducer<State> = createReducer(
     initialState,
-    on(initStore, (state, props): State => {
+    on(actions.initStore, (state, props): State => {
         return({
             'DEFAULT_GENRE': props.DEFAULT_GENRE,
             'DEFAULT_YEAR': props.DEFAULT_YEAR,
             'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
+            'currentPageIndex': props.currentPageIndex,
+            'genreList': props.genreList,
+            'yearList': props.yearList,
             'films': props.films
         });
     }),
 
-    /* on(filterByName, (state): State => {
-        return({...state});
+    on(actions.reinitStore, (state, props): State => {
+        return({
+            ...state,
+            'films': props.films
+        })
     }),
 
-    on(filterByName, (state): State => {
-        return({...state});
+    // Filters
+    on(actions.nameFilterByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        });
     }),
 
-    on(filterByName, (state): State => {
-        return({...state});
-    }), */
+    on(actions.genreFilterByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        });
+    }),
+
+    on(actions.yearFilterByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        });
+    }),
+
+    // Sorts
+    on(actions.nameSortByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        })
+    }),
+
+    on(actions.seasonSortByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        })
+    }),
+
+    on(actions.networkSortByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        })
+    }),
+
+    on(actions.premiereSortByEffect, (state, props: State): State => {
+        return({
+            ...state,
+            'films': props.films
+        })
+    }),
+
+    // Pages
+    on(actions.changePage, (state, props: State): State => {
+        return({
+            'DEFAULT_GENRE': props.DEFAULT_GENRE,
+            'DEFAULT_YEAR': props.DEFAULT_YEAR,
+            'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
+            'currentPageIndex': props.currentPageIndex,
+            'genreList': props.genreList,
+            'yearList': props.yearList,
+            'films': props.films
+        })
+    }),
+
+    on(actions.changeAmountFilmOnOnePage, (state, props: State): State => {
+        return({
+            'DEFAULT_GENRE': props.DEFAULT_GENRE,
+            'DEFAULT_YEAR': props.DEFAULT_YEAR,
+            'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
+            'currentPageIndex': props.currentPageIndex,
+            'genreList': props.genreList,
+            'yearList': props.yearList,
+            'films': props.films
+        })
+    })
 );
 
 export function mainReducer(state: State, action) {

@@ -6,7 +6,7 @@
             "genre": "horror|drama",
             "season": "3",
             "network": "AMC",
-            "data": "20.10.2019"
+            "date": "20.10.2019"
         }
     },
 
@@ -17,7 +17,7 @@
                 "genre": "crime|tragedy",
                 "season": "4",
                 "network": "AMC, Netflix",
-                "data": "05.11.2019"
+                "date": "05.11.2019"
             }
     },
 
@@ -28,7 +28,106 @@
                 "genre": "drama|dark comedy",
                 "season": "5",
                 "network": "AMC",
-                "data": "01.01.2019"
+                "date": "01.01.2019"
+            }
+    },
+
+    {
+        "filmName": "The Terror",
+        "info":
+        {
+            "genre": "horror|drama",
+            "season": "3",
+            "network": "AMC",
+            "date": "20.10.2019"
+        }
+    },
+
+    {
+        "filmName": "Better Call Saul",
+        "info":
+            {
+                "genre": "crime|tragedy",
+                "season": "4",
+                "network": "AMC, Netflix",
+                "date": "05.11.2019"
+            }
+    },
+
+    {
+        "filmName": "Preacher",
+        "info":
+            {
+                "genre": "drama|dark comedy",
+                "season": "5",
+                "network": "AMC",
+                "date": "01.01.2019"
+            }
+    },
+
+    {
+        "filmName": "The Terror",
+        "info":
+        {
+            "genre": "horror|drama",
+            "season": "3",
+            "network": "AMC",
+            "date": "20.10.2019"
+        }
+    },
+
+    {
+        "filmName": "Better Call Saul",
+        "info":
+            {
+                "genre": "crime|tragedy",
+                "season": "4",
+                "network": "AMC, Netflix",
+                "date": "05.11.2019"
+            }
+    },
+
+    {
+        "filmName": "Preacher",
+        "info":
+            {
+                "genre": "drama|dark comedy",
+                "season": "5",
+                "network": "AMC",
+                "date": "01.01.2019"
+            }
+    },
+
+    {
+        "filmName": "The Terror",
+        "info":
+        {
+            "genre": "horror|drama",
+            "season": "3",
+            "network": "AMC",
+            "date": "20.10.2019"
+        }
+    },
+
+    {
+        "filmName": "Better Call Saul",
+        "info":
+            {
+                "genre": "crime|tragedy",
+                "season": "4",
+                "network": "AMC, Netflix",
+                "date": "05.11.2019"
+            }
+    },
+
+    {
+        "filmName": "Preacher",
+        "info":
+            {
+                "genre": "drama|dark comedy",
+                "season": "5",
+                "network": "AMC",
+                "date": "01.01.2019"
             }
     }
 ]
