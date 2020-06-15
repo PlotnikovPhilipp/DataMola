@@ -3,11 +3,6 @@ export interface genreSettings {
     color: string;
 }
 
-export interface yearSettings {
-    from: number;
-    to: number;
-}
-
 export interface filmItem {
     'filmName': string;
     'info': {
@@ -24,7 +19,7 @@ export interface State {
     'AMOUNT_OF_FILM_ON_ONE_PAGE': number;
     'currentPageIndex': number;
     'genreList': Array<genreSettings>;
-    'yearList': yearSettings;
+    'yearList': Array<string>;
     'films': Array<filmItem>
 }
 

@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import genreData from '../filmInfo/genres.json';
+import genreData from '../assets/filmInfo/genres.json';
 
 @Directive({
   selector: '[appColorGenreItems]'

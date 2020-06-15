@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { getStoreData } from '../../selector';
+import { getStoreData } from '../../store/selector';
 import { genreSettings, AppState, State } from '../../types';
-import { filterByName, filterByGenres, filterByYears } from '../../actions';
+import { filterByName, filterByGenres, filterByYears } from '../../store/actions';
 
 @Component({
   selector: 'app-control-header',
@@ -27,8 +27,8 @@ export class ControlHeaderComponent {
         this.currentGenre = (this.currentGenre)? this.currentGenre : store.DEFAULT_GENRE;
         this.currentYear = (this.currentYear)? this.currentYear : store.DEFAULT_YEAR;
 
-        for(let i: number = store.yearList.from; i <= store.yearList.to; i++) {
-          this.listOfYears.push(i.toString());
+        for(let i: number = 0; i < store.yearList.length; i++) {
+          this.listOfYears.push(store.yearList[i]);
         }
       }
     );

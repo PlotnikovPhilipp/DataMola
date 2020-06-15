@@ -12,8 +12,8 @@ import { WindowItemComponent } from './window-item/window-item.component';
 import { ControlFooterComponent } from './control-footer/control-footer.component';
 import { WindowHeaderComponent } from './window-header/window-header.component';
 import { ColorGenreItemsDirective } from './color-genre-items.directive';
-import { mainReducer } from '../reducer';
-import { MovieEffects } from '../storeEffects';
+import { mainReducer } from '../store/reducer';
+import { MovieEffects } from '../store/storeEffects';
 
 @NgModule({
   declarations: [

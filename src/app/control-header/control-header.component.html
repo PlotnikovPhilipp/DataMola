@@ -1,5 +1,5 @@
 <div class="control-header">
-    <input #nameField (keyup.enter)="findFilmsByName(nameField.value)" class="control-header__film-name-input" placeholder="Name" name="name" type="text">
+    <input #nameField (input)="findFilmsByName(nameField.value)" class="control-header__film-name-input" placeholder="Name" name="name" type="text">
 
     <!-- Genre selector -->
     <div class="control-header__genre-selector-container">

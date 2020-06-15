@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {  Store, select } from '@ngrx/store';
-import { getStoreData } from '../../selector';
+import { getStoreData } from '../../store/selector';
 import { filmItem, AppState, State } from '../../types';
 
 @Component({
@@ -15,7 +15,6 @@ export class WindowComponent {
   to: number;
   amount: number;
   defaultFilmValue: filmItem;
-  height: string;
 
   constructor(private store: Store<AppState>) {
     this.defaultFilmValue = {
@@ -33,24 +32,9 @@ export class WindowComponent {
       this.from = storeData.AMOUNT_OF_FILM_ON_ONE_PAGE * storeData.currentPageIndex;
       this.to = storeData.AMOUNT_OF_FILM_ON_ONE_PAGE  + storeData.AMOUNT_OF_FILM_ON_ONE_PAGE * storeData.currentPageIndex;
 
-      switch(storeData.AMOUNT_OF_FILM_ON_ONE_PAGE) {
-        case 5:
-          this.height = '60vh';
-          break;
-        case 10:
-          this.height = '80vh';
-          break;
-        default:
-          this.height = '200vh';
-      }
-
       this.listOfFilms = storeData.films;
       this.displayedFilms = [];
-      for(let i: number = this.from; i < this.to; i++) {
-        if(i >= this.listOfFilms.length) {
-          this.displayedFilms.push(this.defaultFilmValue);
-          continue;
-        }
+      for(let i: number = this.from; i < this.to && i < this.listOfFilms.length; i++) {
         this.displayedFilms.push(this.listOfFilms[i]);
       } 
     });

@@ -6,11 +6,17 @@ import { getStoreData } from './selector';
 import { Observable } from 'rxjs';
 import { exhaustMap, tap, map } from 'rxjs/operators';
 
-import { AppState, State, filmItem } from './types';
-import defaultValues from './filmInfo/config.json';
-import filmInfo from './filmInfo/films.json';
-import genreList from './filmInfo/genres.json';
-import yearList from './filmInfo/years.json';
+import { AppState, State, filmItem } from '../types';
+import defaultValues from '../assets/filmInfo/config.json';
+import filmInfo from '../assets/filmInfo/films.json';
+import genreList from '../assets/filmInfo/genres.json';
+
+let yearSet: Set<string> = new Set();
+for(let i: number = 0; i < filmInfo.length; i++) {
+    yearSet.add(filmInfo[i].info.date.split('.')[2]);
+}
+
+const yearList: Array<string> = Array.from(yearSet);
 
 const initialState: State = {
     'DEFAULT_GENRE': defaultValues.DEFAULT_GENRE,

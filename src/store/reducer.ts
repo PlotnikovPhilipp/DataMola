@@ -1,6 +1,6 @@
 import { createReducer, on, ActionReducer } from '@ngrx/store';
 import * as actions from './actions';
-import { State } from './types';
+import { State } from '../types';
 
 const initialState: State = {
     'DEFAULT_GENRE': null,

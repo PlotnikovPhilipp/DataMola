@@ -1,10 +1,10 @@
 <div class="control-footer">
     <div class="control-footer__page-slider-container">
-        <img (click)="previousPage()" class="control-footer__left-arrow" src="/imgs/leftArrow.svg" alt="left arrow"/>
+        <img (click)="previousPage()" class="control-footer__left-arrow" src="/assets/imgs/leftArrow.svg" alt="left arrow"/>
         <ul class="control-footer__page-index-list">
             <li (click)="selectPage(pageNumber - 1)" class="control-footer__page-index-list-item" *ngFor="let pageNumber of listOfPages" [style.backgroundColor]="(currentPage + 1 === pageNumber)? '#e69c59' : undefined" [style.color]="(currentPage + 1 === pageNumber)? 'white' : 'black'">{{pageNumber}}</li>
         </ul>
-        <img (click)="nextPage()" class="control-footer__right-arrow" src="/imgs/rightArrow.svg" alt="right arrow"/>
+        <img (click)="nextPage()" class="control-footer__right-arrow" src="/assets/imgs/rightArrow.svg" alt="right arrow"/>
     </div>
 
     <div class="control-footer__amount-of-film-on-one-page">

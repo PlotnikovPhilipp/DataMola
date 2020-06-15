@@ -1,8 +1,8 @@
 import { createAction, ActionCreator, props } from '@ngrx/store';
 import { TypedAction, InitialState } from '@ngrx/store/src/models';
-import defaultValues from './filmInfo/config.json';
-import filmInfo from './filmInfo/films.json';
-import { State, filmItem } from './types';
+import defaultValues from '../assets/filmInfo/config.json';
+import filmInfo from '../assets/filmInfo/films.json';
+import { State, filmItem } from '../types';
 
 export const initStore: ActionCreator<'[Initiate] AddingData', (props: State) => State & TypedAction<'[Initiate] AddingData'>> = createAction('[Initiate] AddingData', props<State>());
 

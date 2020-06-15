@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { AppState, State } from '../../types';
-import { getStoreData } from '../../selector';
-import { changePage, changeAmountFilmOnOnePage } from '../../actions';
+import { getStoreData } from '../../store/selector';
+import { changePage, changeAmountFilmOnOnePage } from '../../store/actions';
 
 @Component({
   selector: 'app-control-footer',

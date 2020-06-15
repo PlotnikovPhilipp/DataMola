@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../types';
-import { sortByName, sortBySeason, sortByNetwork, sortByPremiere } from '../../actions'
+import { sortByName, sortBySeason, sortByNetwork, sortByPremiere } from '../../store/actions'
 
 @Component({
   selector: 'app-window-header',
