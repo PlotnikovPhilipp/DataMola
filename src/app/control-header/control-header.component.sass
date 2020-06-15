@@ -15,8 +15,7 @@
     background-color: white
     color: black
     z-index: 999
-
-
+    
 .control-header
     display: flex
     width: 100%
@@ -61,8 +60,19 @@
 .control-header__year-list
     @include default-styles-for-selector-lists
     height: 30vh
-    box-shdow: 30px 120px 50px rgb(198, 197, 197, 0.25)
     overflow: auto
+    box-shadow: 30px 90px 70px 10px rgb(198, 197, 197, 0.25)
+
+.control-header__year-list-item,
+.control-header__genre-list-item
+    border-bottom: 0.05vw solid black
+    padding: 5% 0
+    text-indent: 3%
+
+.control-header__year-list-item:hover,
+.control-header__genre-list-item:hover
+    background-color: #E9E1E1
+
     
     
 

@@ -28,9 +28,11 @@ export class MovieEffects implements OnInitEffects {
     searchingGenre: RegExp;
     searchingYear: RegExp;
     newListOfFilms:  Array<filmItem>;
+    ascendingList: boolean;
 
     constructor(private actions$: Actions, private store: Store<AppState>) {
         this.searchingName = new RegExp('.*');
+        this.ascendingList = true;
         this.newListOfFilms = initialState.films;
         this.searchingGenre = (defaultValues.DEFAULT_GENRE === 'All')? new RegExp('.*') : new RegExp(`^${defaultValues.DEFAULT_GENRE}$`);
         this.searchingYear = (defaultValues.DEFAULT_YEAR === 'All')? new RegExp('.*') : new RegExp(`^${defaultValues.DEFAULT_YEAR}$`);
@@ -137,10 +139,11 @@ export class MovieEffects implements OnInitEffects {
                 // Simple create new reference to Angular notice the changing
                 let middleListOfFilms: Array<filmItem> = this.createNewReference();
                 middleListOfFilms.sort((firstElement: filmItem, secondElement: filmItem): number => {
-                    return (firstElement.filmName > secondElement.filmName)? 1 : -1;
+                    return (firstElement.filmName > secondElement.filmName)? ( (this.ascendingList)? 1 : -1 ) : ( (this.ascendingList)? -1 : 1 );
                 });
 
                 this.newListOfFilms = middleListOfFilms;
+                this.ascendingList = !this.ascendingList;
                 return actions.nameSortByEffect({...initialState, films: this.newListOfFilms});
             })
         )
@@ -190,10 +193,12 @@ export class MovieEffects implements OnInitEffects {
                 middleListOfFilms.sort((firstElement: filmItem, secondElement: filmItem): number => {
                     let firstDateInfo: Array<string> = firstElement.info.date.split('.');
                     let secondDateInfo: Array<string> = secondElement.info.date.split('.');
-                    return Number(new Date(+firstDateInfo[2], +firstDateInfo[1] - 1, +firstDateInfo[0])) - Number(new Date(+secondDateInfo[2], +secondDateInfo[1] - 1, +secondDateInfo[0]));
+                    let result: number = Number(new Date(+firstDateInfo[2], +firstDateInfo[1] - 1, +firstDateInfo[0])) - Number(new Date(+secondDateInfo[2], +secondDateInfo[1] - 1, +secondDateInfo[0]));
+                    return (result > 0)? ( (this.ascendingList)? 1 : -1 ) : ( (this.ascendingList)? -1 : 1 );
                 });
 
                 this.newListOfFilms = middleListOfFilms;
+                this.ascendingList = !this.ascendingList;
                 return actions.premiereSortByEffect({...initialState, films: this.newListOfFilms});
             })
         )
