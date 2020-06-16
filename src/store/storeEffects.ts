@@ -19,8 +19,8 @@ for(let i: number = 0; i < filmInfo.length; i++) {
 const yearList: Array<string> = Array.from(yearSet);
 
 const initialState: State = {
-    'DEFAULT_GENRE': defaultValues.DEFAULT_GENRE,
-    'DEFAULT_YEAR': defaultValues.DEFAULT_YEAR,
+    'currentGenre': null,
+    'currentYear': null,
     'AMOUNT_OF_FILM_ON_ONE_PAGE': defaultValues.AMOUNT_OF_FILM_ON_ONE_PAGE,
     'currentPageIndex': defaultValues.firstPage - 1,
     'genreList': genreList,
@@ -40,8 +40,8 @@ export class MovieEffects implements OnInitEffects {
         this.searchingName = new RegExp('.*');
         this.ascendingList = true;
         this.newListOfFilms = initialState.films;
-        this.searchingGenre = (defaultValues.DEFAULT_GENRE === 'All')? new RegExp('.*') : new RegExp(`^${defaultValues.DEFAULT_GENRE}$`);
-        this.searchingYear = (defaultValues.DEFAULT_YEAR === 'All')? new RegExp('.*') : new RegExp(`^${defaultValues.DEFAULT_YEAR}$`);
+        this.searchingGenre = new RegExp('.*');
+        this.searchingYear = new RegExp('.*');
     }
 
     ngrxOnInitEffects(): Action {

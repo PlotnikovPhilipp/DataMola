@@ -1,6 +1,4 @@
 {
-    "DEFAULT_GENRE": "All",
-    "DEFAULT_YEAR": "All",
     "AMOUNT_OF_FILM_ON_ONE_PAGE": 5,
     "firstPage": 1
 }

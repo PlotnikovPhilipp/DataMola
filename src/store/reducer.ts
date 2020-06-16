@@ -3,8 +3,8 @@ import * as actions from './actions';
 import { State } from '../types';
 
 const initialState: State = {
-    'DEFAULT_GENRE': null,
-    'DEFAULT_YEAR': null,
+    'currentGenre': null,
+    'currentYear': null,
     'genreList': null,
     'yearList': null,
     'AMOUNT_OF_FILM_ON_ONE_PAGE': null,
@@ -16,8 +16,8 @@ const _mainReducer: ActionReducer<State> = createReducer(
     initialState,
     on(actions.initStore, (state, props): State => {
         return({
-            'DEFAULT_GENRE': props.DEFAULT_GENRE,
-            'DEFAULT_YEAR': props.DEFAULT_YEAR,
+            'currentGenre': props.currentGenre,
+            'currentYear': props.currentYear,
             'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
             'currentPageIndex': props.currentPageIndex,
             'genreList': props.genreList,
@@ -87,8 +87,8 @@ const _mainReducer: ActionReducer<State> = createReducer(
     // Pages
     on(actions.changePage, (state, props: State): State => {
         return({
-            'DEFAULT_GENRE': props.DEFAULT_GENRE,
-            'DEFAULT_YEAR': props.DEFAULT_YEAR,
+            'currentGenre': props.currentGenre,
+            'currentYear': props.currentYear,
             'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
             'currentPageIndex': props.currentPageIndex,
             'genreList': props.genreList,
@@ -99,8 +99,8 @@ const _mainReducer: ActionReducer<State> = createReducer(
 
     on(actions.changeAmountFilmOnOnePage, (state, props: State): State => {
         return({
-            'DEFAULT_GENRE': props.DEFAULT_GENRE,
-            'DEFAULT_YEAR': props.DEFAULT_YEAR,
+            'currentGenre': props.currentGenre,
+            'currentYear': props.currentYear,
             'AMOUNT_OF_FILM_ON_ONE_PAGE': props.AMOUNT_OF_FILM_ON_ONE_PAGE,
             'currentPageIndex': props.currentPageIndex,
             'genreList': props.genreList,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { getStoreData } from '../../store/selector';
-import { genreSettings, AppState, State } from '../../types';
+import { genreSettings, AppState, State, filmItem } from '../../types';
 import { filterByName, filterByGenres, filterByYears } from '../../store/actions';
 
 @Component({
@@ -20,15 +20,15 @@ export class ControlHeaderComponent {
   constructor(private store: Store<AppState>) {
 
     this.store.pipe(select(getStoreData)).subscribe(
-      (store: State) => {
+      (store: [Array<filmItem>, State]) => {
         this.listOfGenres = [{'genre': 'All', 'color': ''}]
-        this.listOfGenres.push(...store.genreList);
+        this.listOfGenres.push(...store[1].genreList);
         this.listOfYears = ['All'];
-        this.currentGenre = (this.currentGenre)? this.currentGenre : store.DEFAULT_GENRE;
-        this.currentYear = (this.currentYear)? this.currentYear : store.DEFAULT_YEAR;
+        this.currentGenre = store[1].currentGenre || 'All';
+        this.currentYear = store[1].currentYear || 'All';
 
-        for(let i: number = 0; i < store.yearList.length; i++) {
-          this.listOfYears.push(store.yearList[i]);
+        for(let i: number = 0; i < store[1].yearList.length; i++) {
+          this.listOfYears.push(store[1].yearList[i]);
         }
       }
     );

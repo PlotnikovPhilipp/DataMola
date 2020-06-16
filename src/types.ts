@@ -14,8 +14,8 @@ export interface filmItem {
 }
   
 export interface State {
-    'DEFAULT_GENRE': string;
-    'DEFAULT_YEAR': string;
+    'currentGenre': string;
+    'currentYear': string;
     'AMOUNT_OF_FILM_ON_ONE_PAGE': number;
     'currentPageIndex': number;
     'genreList': Array<genreSettings>;

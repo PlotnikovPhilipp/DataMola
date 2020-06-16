@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
-import { AppState, State } from '../../types';
+import { AppState, State, filmItem } from '../../types';
 import { getStoreData } from '../../store/selector';
 import { changePage, changeAmountFilmOnOnePage } from '../../store/actions';
 
@@ -24,9 +24,10 @@ export class ControlFooterComponent {
     this.currentPage = 0;
     this.selectedOptionOfAmountFilmOnOnePage = 0;
     this.store.pipe(select(getStoreData)).subscribe(
-      (store: State) => {
-        this.currentStore = store;
-        let to: number = Math.ceil(store.films.length / store.AMOUNT_OF_FILM_ON_ONE_PAGE);
+      (store: [Array<filmItem>, State]) => {
+        let [, currentState] = store;
+        this.currentStore = currentState;
+        let to: number = Math.ceil(this.currentStore.films.length / this.currentStore.AMOUNT_OF_FILM_ON_ONE_PAGE);
         this.listOfPages = [];
         for(let i: number = 1; i <= to; i++) {
           this.listOfPages.push(i);
